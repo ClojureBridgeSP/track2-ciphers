@@ -81,3 +81,12 @@
 (facts "test"
   (fact "decrypts"
     (core/caesar-decrypt "ahixblmaxmabgzpbmayxtmaxklmatmixkvaxlbgmaxlhnetgwlbgzlmaxmngxpbmahnmmaxphkwltgwgxoxklmhiltmtee" 19) => "hopeisthethingwithfeathersthatperchesinthesoulandsingsthetunewithoutthewordsandneverstopsatall"))
+
+(facts
+  (fact "decrypts"
+    (core/encrypt-letter \w \c) => \y)
+  (fact "decrypts"
+    (core/encrypt-letter \u \i) => \c))
+
+(fact "vigenere encrypt"
+  (core/vigenere-encrypt "welcometoclojurebridge" "cipher") => "ymajsdgbdjpflcglfiklvl")

@@ -19,6 +19,11 @@
   [letter n]
   (to-char (mod (+ (to-int letter) n) 26)))
 
+(defn get-letters
+  "Filtra simbolos e coloca em underscore"
+  [word]
+  (string/lower-case (apply str (filterv #(Character/isLetter %) word))))
+
 (defn caesar-encrypt
   "Encripta frase secreta por n"
   [text n]
@@ -28,11 +33,6 @@
   "Decripta frase secreta por n"
   [secret n]
   (apply str (mapv #(shift % (* -1 n)) secret)))
-
-(defn get-letters
-  "Filtra simbolos e coloca em underscore"
-  [word]
-  (string/lower-case (apply str (filterv #(Character/isLetter %) word))))
 
 (defn increase-frequency
   "Função para aumentar a frequencia da palavra no hash"
@@ -72,3 +72,17 @@
   [secret english-most-frequent]
   (let [frequencies (most-frequent secret)]
     (map #(decrypt-by-key (first %) english-most-frequent secret) frequencies)))
+
+(defn encrypt-letter
+  "Encrypta letra com letra"
+  [letter letter-of-keyword]
+  (to-char (mod (+ (to-int letter) (to-int letter-of-keyword)) 26)))
+
+(defn vigenere-encrypt
+  "Encrypta vigenere"
+  [text word]
+  (let [keyword (take (count text) (cycle word))]
+    (apply str (mapv #(encrypt-letter %1 %2) text keyword))
+  ))
+
+
