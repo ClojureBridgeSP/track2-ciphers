@@ -4,7 +4,7 @@
 
 Clojure é uma linguagem funcional que funciona por cima da linguagem de programação Java. Assim, os tipos de dados em Clojure são tipos de dados em Java por debaixo dos panos. Isso provê o conforto de utilizar métodos em Java para trabalhar com os tipos de dados Java, mas também requer conversões para manter a consistência com os tipos de Java.
 
-A criptografia que iremos explorar nessa lição trabalha com letras que são representadas como um caracted do tipo `char`. No entanto, elas são tratadas como números inteiros `int` para fazer a matemática da criptografia funcionar. Letras formam strings, que são um tipo de dado diferente de caracteres.
+A criptografia que iremos explorar nessa lição trabalha com letras que são representadas como um caracter do tipo `char`. No entanto, elas são tratadas como números inteiros `int` para fazer a matemática da criptografia funcionar. Letras formam strings, que são um tipo de dado diferente de caracteres.
 
 ## Definindo constantes e funções em Clojure
 
