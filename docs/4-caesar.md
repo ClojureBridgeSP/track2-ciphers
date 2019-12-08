@@ -82,7 +82,7 @@ O `#` na frente da expressão indica que é uma função.
 
 ### Convertendo de vetores para strings
 
-`mapv` returna seu resultado como um vetor, mas seria bem útil tê-lo como uma string. A conversão não é óbvia, e você pode pular as explicações de como isso funciona. Aqui está o código para isso:
+`mapv` retorna seu resultado como um vetor, mas seria bem útil tê-lo como uma string. A conversão não é óbvia, e você pode pular as explicações de como isso funciona. Aqui está o código para isso:
 ```clojure
 (apply str [\w \o \r \d]) ; resulta em uma string "word"
 ```
