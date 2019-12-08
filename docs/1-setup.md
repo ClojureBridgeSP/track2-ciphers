@@ -1,13 +1,23 @@
 # Setup do Projeto
 
-1) Criar um novo projeto clojure com [leiningen](https://leiningen.org)
+## Requisitos de ferramentas para o setup
 
-Criar um diretório para o projeto e nele executar no terminal:
-`$ lein new cipher`
+1) Jdk 8 (tutorial não foi testado com outras versões do JDK)
+1.1) Avaliar uso do SDK Man para simplificar gerenciamento de várias versões do Java (https://sdkman.io/) (https://hackernoon.com/using-sdkman-to-manage-java-versions-7fde0d38c501)
+2) Instalação do [leiningen](https://leiningen.org) 
+3) Fazer download e instalar IDE [IntelliJ] https://www.jetbrains.com/idea/download/
+4) Instalar Plugin Cursive no IntelliJ (digitar *Cursive* no Marketplace)
+5) Criar um diretório novo (mkdir clojure-ciphers) em uma pasta qualquer de seu computador e essa pasta será referência
 
-2) Abrir/Importar o projeto no [IntelliJ] https://www.jetbrains.com/idea/download/
+## Criando o projeto
 
-3) Editar o arquivo project.clj para adicionar o [`midje`](https://github.com/marick/Midje) como dependência do projeto. E adicionar o plugin `lein-midje` para executarmos os testes.
+1) Criar um novo projeto clojure com leiningen dentro do diretório criado no passo 4 da etapa anterior para o projeto executando no terminal: ```$ lein new cipher``` . Será criado uma pasta chamada cipher no diretório clojure-ciphers com a estrutura:
+```CHANGELOG.md  doc  LICENSE  project.clj  README.md  resources  src  test```
+
+2) Abrir/Importar (Menu File -> Open) projeto criado no passo 1.
+2.1) Import project from external model (Leiningen)
+
+3) Editar o arquivo project.clj para adicionar o [`Midje`](https://github.com/marick/Midje) como dependência do projeto. E adicionar o plugin `lein-midje` para executarmos os testes.
 
 ``` clojure
 (defproject cipher "0.1.0-SNAPSHOT"
@@ -25,29 +35,24 @@ Criar um diretório para o projeto e nele executar no terminal:
 
 ![screen shot 2017-12-05 at 19 01 52](https://user-images.githubusercontent.com/1187561/33630613-252c3468-d9ef-11e7-8544-64096a70f20d.png)
 
-5) Editar o arquivo `core_test.clj` e adicionar o midje na lista de required namespaces.
-
+5) Substituir o conteúdo do arquivo `core_test.clj` (diretório do projeto: _test/cipher_) com o valor abaixo:
 ``` clojure
-(:require [cipher.core :as core]
-          [midje.sweet :refer :all])
+(ns cipher.core-test
+  (:require [cipher.core :as core]
+            [midje.sweet :refer :all]))
+
+(fact "this will fail"
+      1 => 2)
 ```
 
 > Obs. Note que mudamos aqui também o require do namespace **cipher.core** de `[cipher.core :refer :all]` para `[cipher.core :as core]`.
 Com isso criamos um _alias_ para este namespace, esta é uma boa prática pois evita o conflito de funções além de ajudar na leitura e organização do código.
 
-6) No diretório do seu projeto, execute no terminal
+6) Clique com botão direito do mouse no arquivo `core_test.clj`, e escolha opção "Open In Terminal". Vai abrir uma sessão do terminal dentro do IntelliJ e você deve digitar o comando abaixo:
 
 ```$ lein midje :autotest```
 
 > O autotest vai executar os testes a cada mudança no código :) 
-
-7) Adicionar um novo teste no arquivo core_test.clj com o Midje (e remover o teste do clojure.test gerado)
-
-``` clojure
-(fact "this will fail"
-  1 => 2)
-
-```
 
 No seu terminal veja que o novo teste já foi executado e deve ter um resultado como:
 ```
